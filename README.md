@@ -85,83 +85,20 @@ https://openapi.programming-hero.com/api/plant/1
 
 #### 1) What is the difference between var, let, and const?
 
-#### 2) What is the difference between map(), forEach(), and filter()? 
+**var** has function scope and can be redeclared, **let** has block scope and can be reassigned but not redeclared, and **const** has block scope and cannot be reassigned or redeclared. **var** is hoisted and initialized with undefined, while **let** and **const** are hoisted but not initialized. **const** must be initialized at declaration time.
+
+#### 2) What is the difference between map(), forEach(), and filter()?
+
+**forEach()** executes a function for each array element and returns undefined, **map()** creates a new array with the results of calling a function on every element, and **filter()** creates a new array with elements that pass a test condition. **forEach()** is for side effects, **map()** transforms data, and **filter()** selects specific elements.
 
 #### 3) What are arrow functions in ES6?
 
+Arrow functions are a shorter syntax for writing functions using `=>`. They don't have their own `this` binding and inherit it from the enclosing scope. They're great for callbacks and one-liner functions like `const add = (a, b) => a + b` instead of `function add(a, b) { return a + b }`.
+
 #### 4) How does destructuring assignment work in ES6?
+
+Destructuring allows you to extract values from arrays or objects into distinct variables. For arrays: `const [a, b] = [1, 2]` assigns 1 to a and 2 to b. For objects: `const {name, age} = person` extracts name and age properties from the person object into variables.
 
 #### 5) Explain template literals in ES6. How are they different from string concatenation?
 
-## ⚙️ Functionalities 
-
-1) Category Loading 
-Load Tree Categories dynamically on the left side.
-
-2) Category Click → Tree Data 
-On clicking a category: load trees of that category.
-
-Display in a 3-column card layout.
-
-3) Card Contents 
- Each card includes:
-
-        - Image
-
-        -  Name
-
-        - Short description
-
-        - Category
-
-        - Price
-
-        - Add to Cart button
-
-4) Modal on Card Click 
-Clicking a tree name on a card opens a modal with full tree details.
-
-
-##  🧪 Challenges 
-
-
-    1) Add to Cart 
-    Clicking Add to Cart: - Adds the tree to Cart List
-                          - Shows tree name 
-
-    2) Total Calculation 
-    Calculate total price of trees in cart.
-
-    3) Remove from Cart 
-    Clicking ❌ removes tree and deducts price from total.
-
-    4) Loading Spinner
-    Show spinner while data is loading.
-
-    5) Active Button State 
-    Highlight active category button when selected.
-
-
-
-🧰 Technology Stack:
-        
-        HTML
-
-        CSS (Vanilla / Tailwind / DaisyUI)
-
-        JavaScript (Vanilla only, no frameworks)
-
-📌 Rules
-✅ At least 5 meaningful commits
-
-❌ No dummy text or Lorem Ipsum — must use relevant content
-
-
-
-
-
-## 🔗 Submission
-- **Live Link :** YOUR_DEPLOYED_URL_HERE  
-- **GitHub Private Repository:** YOUR_REPO_URL_HERE  
-
----
+Template literals use backticks `` ` `` and allow embedded expressions with `${}` syntax. They support multiline strings and are more readable than concatenation. Instead of `"Hello " + name + "!"` you can write `` `Hello ${name}!` ``. They also preserve line breaks and spacing naturally.
