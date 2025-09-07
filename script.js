@@ -19,19 +19,17 @@ const loadPlants = (categoryId)=>{
     .then(data => displayAllTrees(data.plants))
 }
 const openModal = (plantId)=>{
-    fetch(`https://openapi.programming-hero.com/api/plants/${plantId}`)
+    fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`)
     .then(res => res.json())
     .then(data => {
         const modalContainer = document.getElementById('modal-container');
-        modalContainer.textContent = '';
-        const modal = document.createElement('div');
-        modal.innerHTML = `<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        modalContainer.innerHTML = `<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">${data.plant.name}</h3>
-    <img class="w-full h-[300px] rounded-[8px]" src="${data.plant.image}" alt="">
-    <p class="py-4"><span class="font-bold">Category:</span> ${data.plant.category}</p>
-    <p class="py-4"><span class="font-bold">Price:</span> ৳${data.plant.price}</p>
-    <p class="py-4"><span class="font-bold">Description:</span> ${data.plant.description}</p>
+    <h3 class="text-lg font-bold">${data.plants.name}</h3>
+    <img class="w-full h-[300px] rounded-[8px]" src="${data.plants.image}" alt="">
+    <p class="py-4"><span class="font-bold">Category:</span> ${data.plants.category}</p>
+    <p class="py-4"><span class="font-bold">Price:</span> ৳${data.plants.price}</p>
+    <p class="py-4"><span class="font-bold">Description:</span> ${data.plants.description}</p>
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
@@ -40,7 +38,8 @@ const openModal = (plantId)=>{
     </div>
   </div>
 </dialog>`;
-      modalContainer.appendChild(modal);
+modalContainer.classList.remove('hidden');
+
       document.getElementById('my_modal_5').showModal();
     })
 }
@@ -49,8 +48,9 @@ const displayAllTrees = plants =>{
     plantContainer.textContent = '';
     for(const plant of plants){
         const plantDiv = document.createElement('div');
-        plantDiv.innerHTML = `<div class="p-4 space-y-3 bg-white h-[400px]" id="${plant.id}" onclick="openModal(${plant.id})">
-                    <img class="w-[311px] h-[186px] rounded-[8px]" src="${plant.image}" alt="">
+        plantDiv.className = "p-4 space-y-3 bg-white h-[400px] cursor-pointer";
+        plantDiv.onclick = () => openModal(plant.id);
+        plantDiv.innerHTML = `<img class="w-[311px] h-[186px] rounded-[8px]" src="${plant.image}" alt="">
                     <h1 class="font-semibold text-[14px]">${plant.name}</h1>
                     <p class="text-[#1f2937] text-[12px] font-normal">${plant.description}</p>
                     <div class="flex justify-between items-center">
@@ -58,8 +58,7 @@ const displayAllTrees = plants =>{
                         </h1>
                         <h1 class="font-semibold text-[14px]">৳${plant.price}</h1>
                     </div>
-                    <button class="text-center w-full rounded-full py-3 px-5 text-[16px] font-medium text-white bg-[#15803d]">Add to cart</button>
-                </div>`;
+                    <button class="text-center w-full rounded-full py-3 px-5 text-[16px] font-medium text-white bg-[#15803d]">Add to cart</button>`;
         plantContainer.appendChild(plantDiv);
     }
 }
