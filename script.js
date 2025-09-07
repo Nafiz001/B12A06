@@ -8,7 +8,11 @@ const loadCategories = () => {
 const loadAllTrees = () => {
     fetch('https://openapi.programming-hero.com/api/plants')
         .then(res => res.json())
-        .then(data => displayAllTrees(data.plants))
+        .then(data => {
+            document.getElementById('spinner').classList.add('hidden');
+            document.getElementById('plant-container').classList.remove('hidden');
+            displayAllTrees(data.plants);
+        })
 
 }
 const displayCart = (id) => {
@@ -31,7 +35,7 @@ const displayCart = (id) => {
             const plant = data.plants;
             const cartDiv = document.createElement('div');
             cartDiv.innerHTML = `
-        <div class="flex justify-between items-center bg-[#f0fdf4] px-3 py-2" id="cart-item-${plant.id}">
+        <div class="flex justify-between items-center bg-[#f0fdf4] px-3 py-2 my-2" id="cart-item-${plant.id}">
                     <div class="">
                         <h1 class="text-lg font-bold">${plant.name}</h1>
                         <h1>${plant.price} x <span id="count-${plant.id}">1</span></h1>
@@ -52,11 +56,18 @@ const displayCart = (id) => {
 
 
 const loadPlants = (categoryId) => {
+    document.getElementById('spinner').classList.remove('hidden');
+    document.getElementById('plant-container').classList.add('hidden');
+    
     removeActive();
     document.getElementById(categoryId).classList.add("bg-green");
     fetch(`https://openapi.programming-hero.com/api/category/${categoryId}`)
         .then(res => res.json())
-        .then(data => displayAllTrees(data.plants))
+        .then(data => {
+            document.getElementById('spinner').classList.add('hidden');
+            document.getElementById('plant-container').classList.remove('hidden');
+            displayAllTrees(data.plants);
+        })
 }
 const openModal = (plantId) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`)
@@ -72,7 +83,6 @@ const openModal = (plantId) => {
     <p class="py-4"><span class="font-bold">Description:</span> ${data.plants.description}</p>
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
         <button class="btn">Close</button>
       </form>
     </div>
@@ -88,11 +98,11 @@ const displayAllTrees = plants => {
     plantContainer.textContent = '';
     for (const plant of plants) {
         const plantDiv = document.createElement('div');
-        plantDiv.className = "p-4 space-y-3 bg-white h-[400px] cursor-pointer";
+        plantDiv.className = "m-4 md:m-0 md:p-4 space-y-3 bg-white  cursor-pointer";
         plantDiv.onclick = () => openModal(plant.id);
         plantDiv.innerHTML = `<img class="w-[311px] h-[186px] rounded-[8px]" src="${plant.image}" alt="">
                     <h1 class="font-semibold text-[14px]">${plant.name}</h1>
-                    <p class="text-[#1f2937] text-[12px] font-normal">${plant.description}</p>
+                    <p class="text-[#1f2937] text-[12px] font-normal h-[90px]">${plant.description}</p>
                     <div class="flex justify-between items-center">
                         <h1 class="bg-[#dcfce7] rounded-full text-[#15803d] text-[14px] font-normal w-auto p-2">${plant.category}
                         </h1>
@@ -104,9 +114,12 @@ const displayAllTrees = plants => {
 }
 
 document.getElementById('all-trees').addEventListener('click', function () {
-    loadAllTrees();
+    document.getElementById('spinner').classList.remove('hidden');
+    document.getElementById('plant-container').classList.add('hidden');
+    
     removeActive();
     document.getElementById('all-trees').classList.add("bg-green");
+    loadAllTrees();
 });
 loadAllTrees();
 

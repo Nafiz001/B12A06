@@ -1,6 +1,9 @@
 .inter {
     font-family: "Inter", sans-serif;
 }
+button{
+    cursor: pointer;
+}
 .bg-green{
     background: #15803d;
     color: white;
