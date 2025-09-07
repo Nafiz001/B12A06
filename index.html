@@ -58,8 +58,9 @@
         </div>
         <div class="text-center">
             <h1 class="font-bold text-[40px] mb-2 text-center">Plant a Tree, Grow a Future</h1>
-            <p class="text-[#1f2937] mb-6">Join our mission to plant 1 million trees and make the Earth greener for future <br>
-generations.</p>
+            <p class="text-[#1f2937] mb-6">Join our mission to plant 1 million trees and make the Earth greener for
+                future <br>
+                generations.</p>
             <button class="btn bg-[#facc15] text-[#15803d] rounded-full border-none">Get involved</button>
         </div>
         <div class="">
@@ -69,14 +70,29 @@ generations.</p>
 
     </section>
 
-    <section class="">
-        <h1>Choose Your Trees</h1>
-        <div class="grid grid-cols-[1fr,4fr,1fr]">
+    <section class="pt-24 px-[135px] bg-[#f0fdf4]">
+        <div class="hidden" id="modal-container">
+            <!-- Open the modal using ID.showModal() method -->
+
+
+        </div>
+        <h1 class="text-[32px] font-semibold text-center mb-[40px]">Choose Your Trees</h1>
+        <div class="grid grid-cols-6 gap-[30px]">
             <div class="">
-                <h1>Categories</h1>
+                <h1 class="text-[20px] font-semibold">Categories</h1>
+                <div class="" id="categories-container">
+                    <div class="category p-2" id="all-trees">
+                        <button>All Trees</button>
+                    </div>
+                </div>
             </div>
-            <div class=""></div>
-            <div class=""></div>
+            <div class="col-span-4 grid grid-cols-3 gap-[30px] space-y-[30px]" id="plant-container">
+                
+
+            </div>
+            <div class="p-4 bg-white">
+                <h1>Your Cart</h1>
+            </div>
         </div>
 
     </section>
