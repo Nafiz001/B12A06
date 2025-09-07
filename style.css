@@ -8,3 +8,11 @@ button{
     background: #15803d;
     color: white;
 }
+.impact-card:hover{
+    background: rgb(121, 215, 121);
+    
+
+}
+.impact-card:hover h1{
+    color: white;
+}
