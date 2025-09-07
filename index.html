@@ -10,10 +10,76 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="box-border inter">
+    <div class="navbar bg-base-100 shadow-sm bg-[#15803d] md:py-[24px] md:px-[135px]">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    <li><a class="">About </a></li>
+                    <li>
+                        <a href="">Gallery</a>
+                    </li>
+                    <li><a>Plant a Tree</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl text-white">Green Earth</a>
+        </div>
+        <div class="navbar-center hidden lg:flex text-white">
+            <ul class="menu menu-horizontal px-1">
+                <li><a>About</a></li>
+                <li>
+                    <a href="">Gallery</a>
+                </li>
+                <li><a>Plant a Tree</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a class="btn bg-[#facc15] text-[#15803d] rounded-full border-none">Plant a Tree</a>
+        </div>
+    </div>
+    <section class="hero bg-[#cff0dc] flex flex-col md:flex-row justify-center gap-[120px]">
+        <div class="">
+            <img src="assets/hero-leaf1.png" alt="">
+        </div>
+        <div class="text-center">
+            <h1 class="font-bold text-[40px] mb-2 text-center">Plant a Tree, Grow a Future</h1>
+            <p class="text-[#1f2937] mb-6">Join our mission to plant 1 million trees and make the Earth greener for future <br>
+generations.</p>
+            <button class="btn bg-[#facc15] text-[#15803d] rounded-full border-none">Get involved</button>
+        </div>
+        <div class="">
+            <img src="assets/hero-leaf2.png" alt="">
+        </div>
+
+
+    </section>
+
+    <section class="">
+        <h1>Choose Your Trees</h1>
+        <div class="grid grid-cols-[1fr,4fr,1fr]">
+            <div class="">
+                <h1>Categories</h1>
+            </div>
+            <div class=""></div>
+            <div class=""></div>
+        </div>
+
+    </section>
 
 
     <script src="script.js"></script>
