@@ -1,5 +1,11 @@
 let total =  0;
 
+const initializeTotal = () => {
+    const totalElement = document.getElementById('total');
+    if (totalElement) {
+        totalElement.innerText = '0';
+    }
+}
 const loadCategories = () => {
     fetch('https://openapi.programming-hero.com/api/categories')
         .then(res => res.json())
@@ -16,6 +22,7 @@ const loadAllTrees = () => {
 
 }
 const displayCart = (id) => {
+    
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
         .then(res => res.json())
         .then(data => {
@@ -33,6 +40,7 @@ const displayCart = (id) => {
             }
             const cartContainer = document.getElementById('cart-container');
             const plant = data.plants;
+            alert(`${plant.name} added to cart`);
             const cartDiv = document.createElement('div');
             cartDiv.innerHTML = `
         <div class="flex justify-between items-center bg-[#f0fdf4] px-3 py-2 my-2" id="cart-item-${plant.id}">
@@ -98,9 +106,9 @@ const displayAllTrees = plants => {
     plantContainer.textContent = '';
     for (const plant of plants) {
         const plantDiv = document.createElement('div');
-        plantDiv.className = "m-4 md:m-0 md:p-4 space-y-3 bg-white  cursor-pointer";
+        plantDiv.className = "m-4 md:m-0 md:p-4 space-y-3 bg-white  cursor-pointer p-4";
         plantDiv.onclick = () => openModal(plant.id);
-        plantDiv.innerHTML = `<img class="w-[311px] h-[186px] rounded-[8px]" src="${plant.image}" alt="">
+        plantDiv.innerHTML = `<img class="w-11/12  h-[186px] rounded-[8px]" src="${plant.image}" alt="">
                     <h1 class="font-semibold text-[14px]">${plant.name}</h1>
                     <p class="text-[#1f2937] text-[12px] font-normal h-[90px]">${plant.description}</p>
                     <div class="flex justify-between items-center">
@@ -112,6 +120,7 @@ const displayAllTrees = plants => {
         plantContainer.appendChild(plantDiv);
     }
 }
+
 
 document.getElementById('all-trees').addEventListener('click', function () {
     document.getElementById('spinner').classList.remove('hidden');
@@ -161,3 +170,4 @@ document.addEventListener('click', function(e) {
         cartItem.remove();
     }
 });
+initializeTotal();
